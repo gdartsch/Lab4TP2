@@ -1,0 +1,33 @@
+1. collection.find(Filters.eq("region", "Americas"));
+2. db.countries.find({"region":"Americas", "population":{"$gt":100000000}});
+3. var filter = Builders<BsonDocument>.Filter.Ne("region", "Africa");
+    return _collection.Find(filter).ToList();
+4.  var collection = db.GetCollection<BsonDocument>("paises");
+
+    var filter = Builders<BsonDocument>.Filter.Eq("name", "Egypt");
+    var update = Builders<BsonDocument>.Update
+                    .Set("name", "Egipto")
+                    .Set("population", 95000000);
+
+    var result = collection.UpdateOne(filter, update);
+5.  var filter = Builders<BsonDocument>.Filter.Eq("Code", code);
+
+            collection.DeleteOne(filter);
+6. Al ejecutar el método drop() sobre una colección, se elimina la colección de la base de datos. Al ejecutar el método drop() sobre una base de datos, se elimina la base de datos.
+7. var filter = Builders<BsonDocument>.Filter.Gt("poblacion", 50000000) & Builders<BsonDocument>.Filter.Lt("poblacion", 150000000);
+            var result = collection.Find(filter).ToList();
+8. var query = from e in _collection.AsQueryable<Pais>()
+                        orderby e.name
+                        select e;
+9. El método skip() salta los primeros n elementos de la colección y devuelve una nueva colección con los elementos restantes. 
+Por ejemplo, si se ejecuta el método skip() sobre la colección países con el valor 2, se saltarán los 2 primeros elementos 
+("Argentina" y "Brasil") y la nueva colección contendrá los elementos restantes ("Chile" y "Uruguay").
+10. Las expresiones regulares en Mongo pueden reemplazar el uso de la cláusula LIKE de SQL de varias maneras. En primer lugar, Mongo proporciona un operador $regex que puede usarse en una consulta para buscar un valor que coincida con una expresión regular dada. Por ejemplo, supongamos que tenemos una colección de documentos con información sobre películas y queremos encontrar todas las películas que comienzan con la letra "A". Podríamos hacer esto con la siguiente consulta:
+
+    db.movies.find({"title": {$regex: "^A"}})
+
+    En segundo lugar, Mongo también ofrece la posibilidad de indexar los campos de un documento usando una expresión regular, lo que permite una búsqueda más eficiente. Por ejemplo, si indexamos el campo "title" de nuestros documentos de películas usando una expresión regular, podríamos encontrar todas las películas que comienzan con la letra "A" de la siguiente manera:
+
+    db.movies.find({"title": /^A/})
+11. db.paises.createIndex( { "codigo": 1 } );
+12. Para hacer un backup de la base de datos mongo países_db, primero hay que conectarse a la base de datos mongo y luego ejecutar el comando "mongodump".
