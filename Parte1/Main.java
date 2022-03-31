@@ -2,6 +2,7 @@ package Parte1;
 
 import java.net.URI;
 import java.net.http.HttpRequest;
+import com.google.gson.*;
 
 public class Main {
             
